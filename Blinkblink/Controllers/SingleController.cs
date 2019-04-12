@@ -31,7 +31,7 @@ namespace Blinkblink.Controllers
 
             var path = Path.Combine(
                         Directory.GetCurrentDirectory(), "wwwroot",
-                        file.GetFilename());
+                        file.FileName);
 
             using (var stream = new FileStream(path, FileMode.Create))
             {

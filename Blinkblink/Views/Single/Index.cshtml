@@ -3,7 +3,7 @@
     <div class="row pt-4 mb-5 text-center">
         <div class="col-12">
             <h2 class="text-white mb-4">@Model.ElementAt(0).Idol.Name</h2>
-            <form  asp-action="UploadFile" method="post"
+            <form  asp-action="UploadFileAsync" method="post"
                   enctype="multipart/form-data">
 
                 <input type="submit"  class="btn btn-primary btn-md text-white" type="file" name="file" />

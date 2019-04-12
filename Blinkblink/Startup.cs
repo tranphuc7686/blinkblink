@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Blinkblink.Models;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Blinkblink
@@ -41,6 +43,9 @@ namespace Blinkblink
             services.AddScoped<IDataRepository<Blinkblink.Models.Image>, ImageManager>();
             services.AddScoped<IDataRepository<Idol>, IdolManager>();
             //
+            services.AddSingleton<IFileProvider>(
+            new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
