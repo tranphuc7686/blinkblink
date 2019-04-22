@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Collections;
+using Blinkblink.ViewModels;
+using Blinkblink.Services;
 
 namespace Blinkblink.Controllers
 {
@@ -16,13 +19,18 @@ namespace Blinkblink.Controllers
     {
         private DBBlinkContext _dBBlinkContext;
         private readonly IHostingEnvironment _appEnvironment;
+        private readonly HomeHelper _homeHelper;
+        private static User _user;
+        private static Idol _idol;
         public HomeController(DBBlinkContext dBBlinkContext, IHostingEnvironment appEnvironment)
         {
             _dBBlinkContext = dBBlinkContext;
             _appEnvironment = appEnvironment;
+            _homeHelper = new HomeHelper(dBBlinkContext);
         }
         public IActionResult Index()
         {
+            _user = _dBBlinkContext.Users.Where(o => o.Id.Equals("1")).FirstOrDefault();
             return View(_dBBlinkContext.Idols);
         }
         public IActionResult Photos()
@@ -47,61 +55,43 @@ namespace Blinkblink.Controllers
         }
         [Route("{id}")]
         public IActionResult Single(string id)
-        {
-            return View(_dBBlinkContext.Images.Include(x => x.Idol).Where(e => e.Idol.Id.Equals(id)).ToList());
+        {           
+            _idol = _dBBlinkContext.Idols.Where(o => o.Id.Equals(id)).FirstOrDefault();
+            ViewData["Images"] = _dBBlinkContext.Images
+                .Include(x => x.Idol)
+                .Where(e => e.Idol.Id.Equals(id))
+                .OrderByDescending(o => o.DateTime)
+                .ToList();
+            ViewData["DataUpload"] = new UploadedImageData();
+            return View();
 
         }
 
-        [HttpPost] //Postback
-
-        public async Task<IActionResult> Upload_Image(IFormFile file)
-
+        public async Task<IActionResult> UploadFiles(UploadedImageData model)
         {
-
-            //--------< Upload_ImageFile() >--------
-
-            //< check >
-
-            if (file == null || file.Length == 0) return Content("file not selected");
-
-            //</ check >
-
-
-
-            //< get Path >
-
-            string path_Root = _appEnvironment.WebRootPath;
-
-            string path_to_Images = path_Root + "\\User_Files\\Images\\" + file.FileName;
-
-            //</ get Path >
-
-
-
-            //< Copy File to Target >
-
-            using (var stream = new FileStream(path_to_Images, FileMode.Create))
-
+            IFormFile formFile = model.ImageFile;
+            var filePathToCopy = "";
+            var filePathToGet = "";
+            int typeData = (formFile.ContentType.Equals("video/mp4") ? 2 : 1);
+            if (formFile.Length > 0)
             {
-
-                await file.CopyToAsync(stream);
-
+                // full path to file in temp location
+                filePathToCopy = Path.Combine(
+                      Directory.GetCurrentDirectory(), "wwwroot\\User_Files\\Images\\",
+                      formFile.FileName);
+                filePathToGet = Path.Combine("\\User_Files\\Images\\",
+                      formFile.FileName);
+                using (var stream = new FileStream(filePathToCopy, FileMode.Create))
+                {
+                    await formFile.CopyToAsync(stream);
+                }
             }
+            _homeHelper.AddPathFilesProcess(model.Caption, filePathToGet, _idol,_user, typeData);
 
-            //</ Copy File to Target >
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
 
-
-
-            //< output >
-
-            ViewData["FilePath"] = path_to_Images;
-
-            return RedirectToAction("Index");
-
-            //</ output >
-
-            //--------</ Upload_ImageFile() >--------
-
+            return RedirectToAction("Single", new { id = _idol.Id });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

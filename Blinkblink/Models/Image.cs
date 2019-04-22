@@ -18,10 +18,10 @@ namespace Blinkblink.Models
         public int IsVideo { get; set; }
         public string IdImageRoot { get; set; }
 
-
-
         //get data
+        public string IdolId { get; set; }
         public Idol Idol { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }

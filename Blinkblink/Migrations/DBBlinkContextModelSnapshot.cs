@@ -40,6 +40,8 @@ namespace Blinkblink.Migrations
 
                     b.Property<DateTime>("DateTime");
 
+                    b.Property<string>("IdImageRoot");
+
                     b.Property<string>("IdolId");
 
                     b.Property<int>("IsVideo");

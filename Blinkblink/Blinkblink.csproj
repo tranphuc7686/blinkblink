@@ -32,4 +32,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\User_Files\Images\" />
+  </ItemGroup>
+
 </Project>
