@@ -14,27 +14,36 @@
        
     </div>
     <div class="row align-items-stretch">
-        @foreach (var p in Model)
+        @for (var i = 3; i < Model.ToArray().Length; i = i +3 )
         {
             <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-                <a href="@p.Url" class="d-block photo-item" data-fancybox="gallery">
-                    <img src="@p.Url" alt="Image" class="img-fluid">
+                <a href="@Model.ElementAt(i).Url" class="d-block photo-item" data-fancybox="gallery">
+                    <img src="@Model.ElementAt(i).Url" alt="Image" class="img-fluid">
                     <div class="photo-text-more">
                         <span class="icon icon-search"></span>
                     </div>
                 </a>
             </div>
             <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <a href="@p.Url" class="d-block photo-item" data-fancybox="gallery">
-                    <img src="@p.Url" alt="Image" class="img-fluid">
+                <a href="@Model.ElementAt(i-1).Url" class="d-block photo-item" data-fancybox="gallery">
+                    @{ var element = @Model.ElementAt(i - 1);}
+                    @if (element.IsVideo == 1)
+                    {
+                        <video src="@Model.ElementAt(i-1).Url" alt="Image" class="img-fluid"></video>
+                    }
+                    else
+                    {
+                        <img src="@Model.ElementAt(i-1).Url" alt="Image" class="img-fluid">
+                    }
+
                     <div class="photo-text-more">
                         <span class="icon icon-search"></span>
                     </div>
                 </a>
             </div>
             <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                <a href="@p.Url" class="d-block photo-item" data-fancybox="gallery">
-                    <img src="@p.Url" alt="Image" class="img-fluid">
+                <a href="@Model.ElementAt(i-2).Url" class="d-block photo-item" data-fancybox="gallery">
+                    <img src="@Model.ElementAt(i-2).Url" alt="Image" class="img-fluid">
                     <div class="photo-text-more">
                         <span class="icon icon-search"></span>
                     </div>

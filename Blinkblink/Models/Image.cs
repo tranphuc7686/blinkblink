@@ -16,6 +16,9 @@ namespace Blinkblink.Models
         public string Url { get; set; }
         public DateTime DateTime { get; set; }
         public int IsVideo { get; set; }
+        public string IdImageRoot { get; set; }
+
+
 
         //get data
         public Idol Idol { get; set; }
