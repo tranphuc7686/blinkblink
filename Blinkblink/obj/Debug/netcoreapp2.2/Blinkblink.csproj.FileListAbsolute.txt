@@ -3,7 +3,6 @@ C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\bin\Debug\netcoreapp2.2\Blin
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\bin\Debug\netcoreapp2.2\Blinkblink.runtimeconfig.dev.json
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\bin\Debug\netcoreapp2.2\Blinkblink.dll
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\bin\Debug\netcoreapp2.2\Blinkblink.pdb
-C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.csprojAssemblyReference.cache
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.csproj.CoreCompileInputs.cache
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.RazorAssemblyInfo.cache
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.RazorAssemblyInfo.cs
@@ -27,3 +26,4 @@ C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razo
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\Home\Single.g.cshtml.cs
+C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.csprojAssemblyReference.cache
