@@ -10,15 +10,13 @@
     <Content Remove="Views\Home\Blog.cshtml" />
     <Content Remove="Views\Home\Contact.cshtml" />
     <Content Remove="Views\Home\Index.cshtml" />
-    <Content Remove="Views\Home\Photos.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Home\Bio.cshtml" />
-    <None Include="Views\Home\Blog.cshtml" />
+    <None Include="Views\User\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Home\Photos.cshtml" />
     <None Include="Views\Home\Single.cshtml" />
   </ItemGroup>
 
@@ -28,7 +26,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
   </ItemGroup>
 

@@ -27,3 +27,5 @@ C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razo
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\Home\Single.g.cshtml.cs
 C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Blinkblink.csprojAssemblyReference.cache
+C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\User\Login.g.cshtml.cs
+C:\Users\phuc.tc\source\repos\Blinkblink\Blinkblink\obj\Debug\netcoreapp2.2\Razor\Views\User\Blog.g.cshtml.cs

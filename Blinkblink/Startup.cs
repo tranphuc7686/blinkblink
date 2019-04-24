@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Blinkblink.Models;
 using Blinkblink.Models.DataManager;
 using Blinkblink.Models.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,9 @@ namespace Blinkblink
             services.AddScoped<IDataRepository<Blinkblink.Models.Image>, ImageManager>();
             services.AddScoped<IDataRepository<Idol>, IdolManager>();
             //
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(o => o.LoginPath = new PathString("/User/Login"));
             services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
@@ -66,8 +70,8 @@ namespace Blinkblink
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseCookiePolicy();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

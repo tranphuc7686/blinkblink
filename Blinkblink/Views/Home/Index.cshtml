@@ -1,49 +1,9 @@
-﻿@model IEnumerable<Blinkblink.Models.Idol>
+﻿@{
+    ViewData["Title"] = "HOME";
+}
+@model IEnumerable<Blinkblink.Models.Idol>
 <div class="container-fluid photos">
     <div class="row align-items-stretch">
-
-        <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up">
-            <a asp-action="Single" asp-route-id="@Model.ElementAt(0).Id" class="d-block photo-item">
-                <img src="@Model.ElementAt(0).Image" alt="Image" class="img-fluid">
-                <div class="photo-text-more">
-                    <div class="photo-text-more">
-                        <h3 class="heading">@Model.ElementAt(0).Name</h3>
-                        <span class="meta">42 Photos</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <a asp-action="Single" asp-route-id="@Model.ElementAt(1).Id" class="d-block photo-item">
-                <img src="@Model.ElementAt(1).Image" alt="Image" class="img-fluid">
-                <div class="photo-text-more">
-                    <div class="photo-text-more">
-                        <h3 class="heading">@Model.ElementAt(1).Name</h3>
-                        <span class="meta">42 Photos</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <a asp-action="Single" asp-route-id="@Model.ElementAt(2).Id" class="d-block photo-item">
-                <img src="@Model.ElementAt(2).Image" alt="Image" class="img-fluid">
-                <div class="photo-text-more">
-                    <div class="photo-text-more">
-                        <h3 class="heading">@Model.ElementAt(2).Name</h3>
-                        <span class="meta">42 Photos</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-            <a asp-action="Single" asp-route-id="@Model.ElementAt(3).Id" class="d-block photo-item">
-                <img src="@Model.ElementAt(3).Image" alt="Image" class="img-fluid">
-                <div class="photo-text-more">
-                    <h3 class="heading">@Model.ElementAt(3).Name</h3>
-                    <span class="meta">42 Photos</span>
-                </div>
-            </a>
-        </div>
         <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <a asp-action="Single" asp-route-id="@Model.ElementAt(4).Id" class="d-block photo-item">
                 <img src="@Model.ElementAt(4).Image" alt="Image" class="img-fluid">
@@ -56,6 +16,50 @@
             </a>
         </div>
 
+        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a asp-action="Single" asp-route-id="@Model.ElementAt(1).Id" class="d-block photo-item">
+                <img src="@Model.ElementAt(1).Image" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                    <div class="photo-text-more">
+                        <h3 class="heading">@Model.ElementAt(1).Name</h3>
+                        <span class="meta">42 Photos</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up">
+            <a asp-action="Single" asp-route-id="@Model.ElementAt(0).Id" class="d-block photo-item">
+                <img src="@Model.ElementAt(0).Image" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                    <div class="photo-text-more">
+                        <h3 class="heading">@Model.ElementAt(0).Name</h3>
+                        <span class="meta">42 Photos</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
+            <a asp-action="Single" asp-route-id="@Model.ElementAt(3).Id" class="d-block photo-item">
+                <img src="@Model.ElementAt(3).Image" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                    <h3 class="heading">@Model.ElementAt(3).Name</h3>
+                    <span class="meta">42 Photos</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <a asp-action="Single" asp-route-id="@Model.ElementAt(2).Id" class="d-block photo-item">
+                <img src="@Model.ElementAt(2).Image" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                    <div class="photo-text-more">
+                        <h3 class="heading">@Model.ElementAt(2).Name</h3>
+                        <span class="meta">42 Photos</span>
+                    </div>
+                </div>
+            </a>
+        </div>
 
     </div>
     <div class="row justify-content-center">

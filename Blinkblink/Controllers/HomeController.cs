@@ -12,9 +12,14 @@ using System.IO;
 using System.Collections;
 using Blinkblink.ViewModels;
 using Blinkblink.Services;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Blinkblink.Controllers
 {
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class HomeController : Controller
     {
         private DBBlinkContext _dBBlinkContext;
@@ -22,6 +27,7 @@ namespace Blinkblink.Controllers
         private readonly HomeHelper _homeHelper;
         private static User _user;
         private static Idol _idol;
+
         public HomeController(DBBlinkContext dBBlinkContext, IHostingEnvironment appEnvironment)
         {
             _dBBlinkContext = dBBlinkContext;
@@ -30,21 +36,16 @@ namespace Blinkblink.Controllers
         }
         public IActionResult Index()
         {
-            _user = _dBBlinkContext.Users.Where(o => o.Id.Equals("1")).FirstOrDefault();
+            ClaimsPrincipal principal = HttpContext.User;
+            string idUser = principal.Claims.ElementAt(1).Value;
+            _user = _dBBlinkContext.Users.Where(o => o.Id.Equals(idUser)).FirstOrDefault();
             return View(_dBBlinkContext.Idols);
         }
-        public IActionResult Photos()
-        {
-            return View();
-        }
+       
         public IActionResult Privacy()
         {
             return View();
-        }
-        public IActionResult Blog()
-        {
-            return View();
-        }
+        }     
         public IActionResult Bio()
         {
             return View();

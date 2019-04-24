@@ -1,40 +1,46 @@
-﻿@model Blinkblink.ViewModels.UploadedImageData
+﻿@{
+    ViewData["Title"] = "SINGLE";
+}
+@model Blinkblink.ViewModels.UploadedImageData
 @{
     IEnumerable<Image> Images = ViewData["Images"] as IEnumerable<Image>;
-   
+
 }
 <div class="container-fluid photos">
     <div class="row pt-4 mb-5 text-center">
         <div class="col-12">
             <h2 class="text-white mb-4">@Images.ElementAt(0).Idol.Name</h2>
 
-            @*<form method="post" enctype="multipart/form-data" asp-action="UploadFiles">
-            <div class="form-group">
-                <div class="form-group">
-                    <label asp-for="Caption"></label>
-                    <input asp-for="Caption" type="text" class="form-control" />
-                </div>
-                <div class="col-md-10">
-                    <p>Upload one or more files using this form:</p>
-                    <input type="file" name="ImageFile" accept="image/*,video/*">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Upload">
-                </div>
-            </div>
-        </form>*@
+
             <a href="#0" class="cd-popup-trigger">Submit Ur Fav Picture</a>
 
             <div class="cd-popup" role="alert">
                 <div class="cd-popup-container">
-                    <p>Are you sure you want to delete this element?</p>
-                    <ul class="cd-buttons">
-                        <li><a href="#0">Yes</a></li>
-                        <li><a href="#0">No</a></li>
-                    </ul>
-                    <a href="#0" class="cd-popup-close img-replace">Close</a>
+                    <form id="FormSubmitFile" method="post" enctype="multipart/form-data" asp-action="UploadFiles">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-white" asp-for="Caption"></label>
+                                <input asp-for="Caption" type="text" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-white" for="subject">File</label>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="file" name="ImageFile" accept="image/*,video/*">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <ul class="cd-buttons">
+                            <li><a id="submitform" href="#0">Upload</a></li>
+                            <li><a href="#0">No</a></li>
+                        </ul>
+                    </form>
+                    <a href="#0" class="cd-popup-close img-replace"></a>
                 </div> <!-- cd-popup-container -->
             </div> <!-- cd-popup -->
         </div>
@@ -42,49 +48,49 @@
     </div>
     <div class="row align-items-stretch">
         @{
-                var totalLoop = Images.ToArray().Length / 19;
-                var elementThua = Images.ToArray().Length % 19;
-                var sizeArr = Images.ToArray().Length;
-                if (elementThua > 0)
+            var totalLoop = Images.ToArray().Length / 19;
+            var elementThua = Images.ToArray().Length % 19;
+            var sizeArr = Images.ToArray().Length;
+            if (elementThua > 0)
+            {
+                totalLoop++;
+            }
+            for (var i = 0; i < totalLoop; i++)
+            {
+                if (i > sizeArr)
                 {
-                    totalLoop++;
+                    break;
                 }
-                for (var i = 0; i < totalLoop; i++)
-                {
-                    if(i> sizeArr)
-                    {
-                        break;
-                    }
-                    var element_0 = Images.ElementAt(i);
+                var element_0 = Images.ElementAt(i);
                 <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-                            <a href="@element_0.Url" class="d-block photo-item" data-fancybox="gallery">
-                                @{
-                                    if (element_0.IsVideo == 1)
-                                    {
-                                        <img src="@element_0.Url" alt="Image" class="img-fluid">
-                                        <div class="photo-text-more">
-                                            <span class="icon icon-search"></span>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                            <video poster="@element_0.Url" class="img-fluid" >
-                                <source src="@element_0.Url" type="video/mp4">
-                            </video>
-                                        <div class="photo-text-more">
-                                            <span class="icon icon-search"></span>
-                                        </div>
-                                    }
+                    <a href="@element_0.Url" class="d-block photo-item" data-fancybox="gallery">
+                        @{
+                            if (element_0.IsVideo == 1)
+                            {
+                                <img src="@element_0.Url" alt="Image" class="img-fluid">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <video poster="@element_0.Url" class="img-fluid">
+                                    <source src="@element_0.Url" type="video/mp4">
+                                </video>
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            }
 
-                                }
+                        }
 
-                            </a>
+                    </a>
                 </div>
-                 if(i+1> sizeArr)
-                    {
-                        break;
-                    }
-                    var element_1 = Images.ElementAt(i+1);
+                if (i + 1 > sizeArr)
+                {
+                    break;
+                }
+                var element_1 = Images.ElementAt(i + 1);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_1.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -108,11 +114,11 @@
                         }
                     </a>
                 </div>
-                        if (i+2 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_2 = Images.ElementAt(i+2);
+                if (i + 2 > sizeArr)
+                {
+                    break;
+                }
+                var element_2 = Images.ElementAt(i + 2);
                 <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                     <a href="@element_2.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -136,11 +142,11 @@
                         }
                     </a>
                 </div>
-                  if (i+3 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_3 = Images.ElementAt(i+3);
+                if (i + 3 > sizeArr)
+                {
+                    break;
+                }
+                var element_3 = Images.ElementAt(i + 3);
                 <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up">
                     <a href="@element_3.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -164,11 +170,11 @@
                         }
                     </a>
                 </div>
-                if (i+4 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_4 = Images.ElementAt(i+4);
+                if (i + 4 > sizeArr)
+                {
+                    break;
+                }
+                var element_4 = Images.ElementAt(i + 4);
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_4.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -192,11 +198,11 @@
                         }
                     </a>
                 </div>
-                 if (i+5 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_5 = Images.ElementAt(i+5);
+                if (i + 5 > sizeArr)
+                {
+                    break;
+                }
+                var element_5 = Images.ElementAt(i + 5);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up">
                     <a href="@element_5.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -220,11 +226,11 @@
                         }
                     </a>
                 </div>
-                 if (i+6 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_6 = Images.ElementAt(i+6);
+                if (i + 6 > sizeArr)
+                {
+                    break;
+                }
+                var element_6 = Images.ElementAt(i + 6);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_6.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -248,11 +254,11 @@
                         }
                     </a>
                 </div>
-                 if (i+7 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_7 = Images.ElementAt(i+7);
+                if (i + 7 > sizeArr)
+                {
+                    break;
+                }
+                var element_7 = Images.ElementAt(i + 7);
 
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
                     <a href="@element_7.Url" class="d-block photo-item" data-fancybox="gallery">
@@ -277,11 +283,11 @@
                         }
                     </a>
                 </div>
-                  if (i+8 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_8 = Images.ElementAt(i+8);
+                if (i + 8 > sizeArr)
+                {
+                    break;
+                }
+                var element_8 = Images.ElementAt(i + 8);
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_8.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -305,11 +311,11 @@
                         }
                     </a>
                 </div>
-                 if (i+9 > sizeArr)
-                        {
-                     break;
-                        }
-                          var element_9 = Images.ElementAt(i+9);
+                if (i + 9 > sizeArr)
+                {
+                    break;
+                }
+                var element_9 = Images.ElementAt(i + 9);
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <a href="@element_9.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -333,11 +339,11 @@
                         }
                     </a>
                 </div>
-                   if (i+10> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_10 = Images.ElementAt(i+10);
+                if (i + 10 > sizeArr)
+                {
+                    break;
+                }
+                var element_10 = Images.ElementAt(i + 10);
                 <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
                     <a href="@element_10.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -361,11 +367,11 @@
                         }
                     </a>
                 </div>
-                 if (i+11> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_11 = Images.ElementAt(i+11);
+                if (i + 11 > sizeArr)
+                {
+                    break;
+                }
+                var element_11 = Images.ElementAt(i + 11);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_11.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -389,11 +395,11 @@
                         }
                     </a>
                 </div>
-                 if (i+12> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_12 = Images.ElementAt(i+12);
+                if (i + 12 > sizeArr)
+                {
+                    break;
+                }
+                var element_12 = Images.ElementAt(i + 12);
                 <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                     <a href="@element_12.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -417,11 +423,11 @@
                         }
                     </a>
                 </div>
-                   if (i+13> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_13 = Images.ElementAt(i+13);
+                if (i + 13 > sizeArr)
+                {
+                    break;
+                }
+                var element_13 = Images.ElementAt(i + 13);
                 <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up">
                     <a href="@element_13.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -445,11 +451,11 @@
                         }
                     </a>
                 </div>
-                  if (i+14> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_14 = Images.ElementAt(i+14);
+                if (i + 14 > sizeArr)
+                {
+                    break;
+                }
+                var element_14 = Images.ElementAt(i + 14);
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_14.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -473,11 +479,11 @@
                         }
                     </a>
                 </div>
-                 if (i+15> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_15 = Images.ElementAt(i+15);
+                if (i + 15 > sizeArr)
+                {
+                    break;
+                }
+                var element_15 = Images.ElementAt(i + 15);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up">
                     <a href="@element_15.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -501,11 +507,11 @@
                         }
                     </a>
                 </div>
-                   if (i+16> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_16 = Images.ElementAt(i+16);
+                if (i + 16 > sizeArr)
+                {
+                    break;
+                }
+                var element_16 = Images.ElementAt(i + 16);
                 <div class="col-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_16.Url" class="d-block photo-item" data-fancybox="gallery">
                         @{
@@ -529,11 +535,11 @@
                         }
                     </a>
                 </div>
-                 if (i+17> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_17 = Images.ElementAt(i+17);
+                if (i + 17 > sizeArr)
+                {
+                    break;
+                }
+                var element_17 = Images.ElementAt(i + 17);
 
                 <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
                     <a href="@element_17.Url" class="d-block photo-item" data-fancybox="gallery">
@@ -558,11 +564,11 @@
                         }
                     </a>
                 </div>
-                  if (i+18> sizeArr)
-                        {
-                     break;
-                        }
-                          var element_18 = Images.ElementAt(i+18);
+                if (i + 18 > sizeArr)
+                {
+                    break;
+                }
+                var element_18 = Images.ElementAt(i + 18);
 
                 <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up" data-aos-delay="100">
                     <a href="@element_18.Url" class="d-block photo-item" data-fancybox="gallery">

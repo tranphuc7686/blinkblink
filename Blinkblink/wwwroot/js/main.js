@@ -9,7 +9,12 @@ jQuery(document).ready(function($) {
 	"use strict";
 
 
-    
+    var sitePicked = 0;
+    $('.btnLiPage').on('click', function (e) {
+        $(e.currentTarget).addClass("active"); 
+
+    });
+
 	var siteMenuClone = function() {
 
 		$('.js-clone-nav').each(function() {
@@ -257,4 +262,10 @@ jQuery(document).ready(function($) {
             $('.cd-popup').removeClass('is-visible');
         }
     });
+    // submit form
+    $('#submitform').on('click', function (event) {
+        $("#FormSubmitFile").submit();
+    });
+   
+
 });
