@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "STORE";
+}
+@model IEnumerable<Blinkblink.Models.Category>
+
+    <div class="container-fluid photos">
+        <div class="row justify-content-center">
+            <div class="col-md-8 pt-4">
+                <div class="row mb-5" data-aos="fade-up">
+                    <div class="col-12">
+                        <h2 class="text-white mb-4 text-center">My Store</h2>
+                    </div>
+                </div>
+                <ul class="store-header" style="">
+                    @foreach (var e in Model)
+                    {
+                        <li>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="button" onclick="onReloadPage(@e.Id)" value="@e.Name" class="btn btn-primary btn-md text-white">
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+
+                </ul>
+                <div id="store-products" class="row align-items-stretch">
+
+                </div>
+
+
+            
+        </div>
+    </div>
+                
+           
+
+
+    </div>
+<div class="row justify-content-center">
+    <div class="col-md-12 text-center py-5">
+        <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+    </div>
+</div>
+    </div>
+
+

@@ -266,6 +266,34 @@ jQuery(document).ready(function($) {
     $('#submitform').on('click', function (event) {
         $("#FormSubmitFile").submit();
     });
+
+   
+   
    
 
 });
+function onReloadPage(id) {
+    $.ajax({
+        type: "GET",
+        url: '/Store/GetProduct/'+id,
+        data: '{}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: OnSuccess,
+        failure: function (response) {
+            alert(response.d);
+        },
+        error: function (response) {
+            alert(response.d);
+        }
+    });
+};
+function OnSuccess(response) {
+    $('#store-products').empty();
+    for (var i = 0; i < response.length; i++) {
+        var e = response[i];
+        $('#store-products').append('<div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">  <a href="/Store/Product/'+e.id+'" class="d-block photo-item">           <img src='+e.url+' alt='+e.name+' class="img-fluid">                <div class="photo-text-more">                    <div class="photo-text-more">                        <h3 class="heading">'+e.name+'</h3>                        <span class="meta">42 Photos</span>                    </div>                </div>          </a>        </div >');
+    }
+   
+}
+onReloadPage(1);

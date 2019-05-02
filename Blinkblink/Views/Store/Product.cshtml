@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "PRODUCT";
+}
+@model IEnumerable<Blinkblink.Models.ImageProduct>
+
+    <div class="container-fluid photos">
+        <div class="row justify-content-center">
+            <div class="col-md-8 pt-4">
+                <div class="row mb-5" data-aos="fade-up">
+                    <div class="col-12">
+                        <h2 class="text-white mb-4 text-center">@Model.ElementAt(0).Product.Name</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center"  data-aos="fade-up">
+
+                    <div class="d-flex blog-entry align-items-start">
+                        <figure class="mb-5" data-aos="fade-up">
+                            <img src="@Model.ElementAt(0).Product.Url" alt="Image" class="img-fluid">
+                        </figure>
+                        <div style="margin-left: 20px; margin-bottom:20px ">
+                            <h2 class="mt-0 mb-2"><a href="#">@Model.ElementAt(0).Product.Name</a></h2>
+                            <div class="meta mb-3">Posted by James on <a href="#">@Model.ElementAt(0).Product.Name</a></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis aliquid doloremque qui, saepe alias eum?</p>
+                            <input type="submit" value="BUY" class="btn btn-primary btn-md text-white">                   
+                        </div>
+
+
+                    </div>
+                   
+                    <div class="row align-items-stretch" >
+
+                        @foreach (var e in Model)
+                        {
+                            <div class="col-6 col-md-6 col-lg-3" >
+                                <a href="@e.Url" class="d-block photo-item" data-fancybox="gallery">
+                                    <img src="@e.Url" alt="Image" class="img-fluid">
+                                    <div class="photo-text-more">
+                                        <span class="icon icon-search"></span>
+                                    </div>
+
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-12 text-center py-5">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>

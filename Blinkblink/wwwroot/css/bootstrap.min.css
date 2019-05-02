@@ -1997,9 +1997,10 @@ fieldset:disabled a.btn {
   pointer-events: none; }
 
 .btn-primary {
-  color: #fff;
-  background-color: #ef6c57;
-  border-color: #ef6c57; }
+    color: black;
+    background-color: black;
+    border-color: black;
+}
   .btn-primary:hover {
     color: #fff;
     background-color: #ec4d34;

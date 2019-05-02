@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DemoNetCore</title>
+    <title>@ViewData["Title"] - BlinkBlink</title>
 
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
@@ -48,8 +48,11 @@
                                 case "HOME":
                                     {
                                         <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Store" asp-action="Store">Store</a></li>
+
                                         <li class=""><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
                                         <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
                                         break;
@@ -57,8 +60,11 @@
                                 case "BIO":
                                     {
                                         <li class=""><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li class="active"><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Store" asp-action="Store">Store</a></li>
+
                                         <li class=""><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class="active"><a asp-controller="Home" asp-action="Bio">Bio</a></li>
                                         <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
                                         break;
@@ -66,8 +72,11 @@
                                 case "BLOG":
                                     {
                                         <li class=""><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Store" asp-action="Store">Store</a></li>
+
                                         <li class="active"><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
                                         <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
 
@@ -76,18 +85,34 @@
                                 case "CONTACT":
                                     {
                                         <li class=""><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Store" asp-action="Store">Store</a></li>
+
                                         <li class=""><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
                                         <li class="active"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
 
                                         break;
                                     }
+                                case "STORE":
+                                    {
+                                        <li class=""><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <li class="active"><a asp-controller="Store" asp-action="Store">Store</a></li>
+                                        <li class=""><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                        <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
+                                        break;
+                                    }
                                 default:
                                     {
                                         <li class=""><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
+                                        <li class=""><a asp-controller="Store" asp-action="Store">Store</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Blog">Blog</a></li>
+
+                                        <li class=""><a asp-controller="Home" asp-action="Bio">Bio</a></li>
                                         <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                                         <li class=""><a asp-controller="User" asp-action="Logout">Log out</a></li>
 

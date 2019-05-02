@@ -1,10 +1,11 @@
 /* Base */
 body {
-  line-height: 1.7;
-  color: gray;
-  font-weight: 400;
-  font-size: 1rem;
-  background: #000; }
+    line-height: 1.7;
+    color: black;
+    font-weight: 400;
+    font-size: 1rem;
+    background: #f0afbe;
+}
 
 ::-moz-selection {
   background: #000;
@@ -70,7 +71,9 @@ h1, h2, h3, h4, h5,
     visibility: visible; }
 
 .btn {
-  border-radius: 30px; }
+  border-radius: 30px; 
+
+}
   .btn:hover, .btn:active, .btn:focus {
     outline: none;
     -webkit-box-shadow: none !important;
@@ -100,7 +103,7 @@ h1, h2, h3, h4, h5,
 
 .form-control {
   border: none;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid black;
   border-radius: 0;
   background: none;
   color: #fff;
@@ -802,12 +805,8 @@ h1, h2, h3, h4, h5,
     margin: 3em auto;
     text-align: center;
     color: #FFF;
-    font-size: 14px;
-    font-size: 0.875rem;
-    font-weight: bold;
-    text-transform: uppercase;
     border-radius: 50em;
-    background: #f0afbe;
+    background: black;
     box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
 }
 @media only screen and (min-width: 1170px) {
@@ -950,4 +949,6 @@ padding: 0;
     margin: 8em auto;
   }
 }
-
+.store-header li{
+    display:inline-block;
+}
